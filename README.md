@@ -52,8 +52,20 @@ Este sistema permite al restaurante MyC administrar de forma eficiente sus opera
 
 ## 📦 Instalación del proyecto
 
-### 1. Clona el repositorio
+### Clona el repositorio
 
 ```bash
 git clone https://github.com/AresHidalgo/MyC-Restaurant.git
 cd myc-restaurant-management
+```
+
+### Comandos de arranque
+
+```bash
+npm i # Instala las dependencias
+
+npm run dev:all # Inicia el Backend y el Frontend en modo desarrollo
+
+npm run server # Inicia el Backend en modo desarrollo
+npm run dev # Inicia el Frontend en modo desarrollo
+```
