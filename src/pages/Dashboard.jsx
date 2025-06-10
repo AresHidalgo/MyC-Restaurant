@@ -45,13 +45,17 @@ const Dashboard = () => {
         const clientes = await axios.get('http://localhost:5000/api/clientes');
         const clientesCount = clientes.data.length;
 
+        const ingresos = await axios.get('http://localhost:5000/api/ventas');
+        const ingresosSemana = ingresos.data.ventasHoy
+
         const platos = await axios.get('http://localhost:5000/api/platos');
         const platosCount = platos.data.length
-        setStats({ ...stats, platosCount, clientesCount });
+        setStats({ ...stats, platosCount, clientesCount, ingresosSemana });
 
         // Fetch pedidos
         const pedidosRes = await axios.get('http://localhost:5000/api/pedidos');
         const pedidos = pedidosRes.data;
+
 
         // Fetch reseñas
         const reseñasRes = await axios.get('http://localhost:5000/api/resenas');
