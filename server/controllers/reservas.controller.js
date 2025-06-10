@@ -198,6 +198,8 @@ export const updateReserva = async (req, res) => {
         }
       }
 
+      
+
       const isAvailable = await isMesaAvailable(
         targetMesaId,
         targetFecha,
@@ -258,6 +260,8 @@ export const changeReservaStatus = async (req, res) => {
   const { id } = req.params
   const { estado } = req.body
 
+  
+
   if (
     !estado ||
     !['pendiente', 'confirmada', 'cancelada', 'completada'].includes(estado)
@@ -278,6 +282,18 @@ export const changeReservaStatus = async (req, res) => {
     await reserva.update({
       estado
     })
+
+    const mesa_id = reserva.mesa_id
+
+    await Mesa.update(
+      {
+        estado: 'disponible',
+        disponible: true
+      },
+      {
+        where: { id: mesa_id }
+      }
+    )
 
     return res.status(200).json(reserva)
   } catch (error) {
